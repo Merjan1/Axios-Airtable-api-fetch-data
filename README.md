@@ -20,7 +20,7 @@ to see the methods required above, just check the code :)
 
 ```javascript
 const getAllAssets = async () => {
-  const response = await getAll("/assets");
+  const response = await getAll("assets");
 
   console.log(response.data);
 };
