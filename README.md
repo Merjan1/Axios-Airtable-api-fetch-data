@@ -1,6 +1,6 @@
 # Airtable API Client using Axios
 
-**I don't own the rights for the images links used here, these are for studies purposes only.**
+**I don't own the rights for the images links used here, these are for study purposes only.**
 
 **Example code below:**
 
