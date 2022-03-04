@@ -22,8 +22,6 @@ const getAllAssets = async () => {
     console.error(err);
   }
 };
-
-getAllAssets();
 ```
 
 - Get single item from api:
@@ -40,8 +38,6 @@ const getSingleAsset = async () => {
     console.error(err);
   }
 };
-
-getSingleAsset();
 ```
 
 - Create item:
@@ -70,8 +66,6 @@ const createAsset = async () => {
     console.error(err);
   }
 };
-
-createAsset();
 ```
 
 - Update item:
@@ -94,8 +88,6 @@ const updateAsset = async () => {
     console.error(err);
   }
 };
-
-updateAsset();
 ```
 
 - Delete item:
@@ -114,6 +106,4 @@ const deletarItem = async () => {
     console.error(err);
   }
 };
-
-deletarItem();
 ```
