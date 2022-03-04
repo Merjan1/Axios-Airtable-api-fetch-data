@@ -6,23 +6,21 @@
 
 _In these example I'm fetching from an Asset table._
 
-```javascript
-const getAll = require("./apiClient/getAll");
-const getOne = require("./apiClient/getOne");
-const createRecord = require("./apiClient/post");
-const updateRecord = require("./apiClient/patch");
-const deleteRecord = require("./apiClient/delete");
-```
-
 to see the methods required above, just check the code :)
 
 - Get all itens from api:
 
 ```javascript
-const getAllAssets = async () => {
-  const response = await getAll("/assets");
+const getAll = require("./apiClient/getAll");
 
-  console.log(response.data);
+const getAllAssets = async () => {
+  try {
+    const response = await getAll("/assets");
+
+    console.log(response.data);
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 getAllAssets();
@@ -31,6 +29,8 @@ getAllAssets();
 - Get single item from api:
 
 ```javascript
+const getOne = require("./apiClient/getOne");
+
 const getSingleAsset = async () => {
   try {
     const response = await getOne("assets", "recoRdIDHerEPeOpLe");
@@ -47,6 +47,8 @@ getSingleAsset();
 - Create item:
 
 ```javascript
+const createRecord = require("./apiClient/post");
+
 const data = {
   //Here you can put all the itens from field object if you want.
   name: "New asset",
@@ -75,6 +77,8 @@ createAsset();
 - Update item:
 
 ```javascript
+const updateRecord = require("./apiClient/patch");
+
 const dataPatch = {
   name: "Patch!!!!!",
 };
@@ -97,6 +101,8 @@ updateAsset();
 - Delete item:
 
 ```javascript
+const deleteRecord = require("./apiClient/delete");
+
 const recordId = "recoRdIDHerEPeOpLe";
 
 const deletarItem = async () => {
