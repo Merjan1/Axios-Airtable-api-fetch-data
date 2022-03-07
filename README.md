@@ -4,8 +4,8 @@
 
 **Example code below:**
 
-My story on doing this is that I was practicing data fetching using axios. I'm a front-end dev and didn't wanted to go through the process of creating a backend just to practice and didn't wanted to use random apis for that, so I decided to use Airtable, which is a great tool for helping you to get some things done (no, this is not a paid advertisement), in my case that was the back-end for my study.
-The thing is that airtable documentation don't focus that much on fetching using javascript (at least I couldn't, as a begginer I couldn't figure that out), their real focus is using their js api, which in my case wasn't what I wanted and it was so hard to find this information online, so I decided to make this visible to anyone that's going through the same struggles as I was.
+My story on doing this is that I was practicing data fetching using axios. I'm a front-end dev and didn't wanted to go through the process of creating a backend just to practice and didn't wanted to use random apis for that, so I decided to use Airtable, which is a great tool for helping you to get some things done nicely, since it's a cloud collaboration service oftenly used to create relational databases (no, this is not a paid advertisement).
+The thing is that airtable documentation focus mainly on fetching data using their js api, which in my case wasn't what I wanted and it was so hard to find online how to fetch data using axios and airtable, because the documentation gets a bit confusing about fetching data outside the use of the api, so I decided to make this visible to anyone that's going through the same struggles as I was.
 
 _In these example I'm fetching from an Asset table._
 
