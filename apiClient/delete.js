@@ -1,10 +1,14 @@
 const apiBaseClient = require("./base");
 
-const deleteRecord = async (tableName, recordId) => {
+const deleteRecord = async (tableName, recordsId) => {
+  const buffer = recordsId.map((recordId, index) => {
+    return {
+      [`records[${index}]`]: recordId,
+    };
+  });
+
   const options = {
-    params: {
-      "records[]": recordId,
-    },
+    params: Object.assign({}, ...buffer),
   };
 
   try {

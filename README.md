@@ -25,6 +25,8 @@ const getAllAssets = async () => {
     console.error(err);
   }
 };
+
+getAllAssets();
 ```
 
 - Get single item from api:
@@ -32,21 +34,35 @@ const getAllAssets = async () => {
 ```javascript
 const getOne = require("./apiClient/getOne");
 
-const getSingleAsset = async () => {
+const getSingleAsset = async (recordId) => {
   try {
-    const response = await getOne("assets", "recoRdIDHerEPeOpLe");
+    const response = await getOne("assets", recordId);
 
     console.log(response.data);
   } catch (err) {
     console.error(err);
   }
 };
+
+const recordId = "recoRdIDHerEPeOpLe";
+
+getSingleAsset(recordId);
 ```
 
 - Create item:
 
 ```javascript
 const createRecord = require("./apiClient/post");
+
+const createAsset = async (data) => {
+  try {
+    const response = await createRecord("assets", data);
+
+    console.log(response.data);
+  } catch (err) {
+    console.error(err);
+  }
+};
 
 const data = {
   //Here you can put all the itens from field object if you want.
@@ -60,15 +76,7 @@ const data = {
   link: "https://mobile.twitter.com/123testandobr",
 };
 
-const createAsset = async () => {
-  try {
-    const response = await createRecord("assets", data);
-
-    console.log(response.data);
-  } catch (err) {
-    console.error(err);
-  }
-};
+createAsset(data);
 ```
 
 - Update item:
@@ -76,21 +84,23 @@ const createAsset = async () => {
 ```javascript
 const updateRecord = require("./apiClient/patch");
 
-const dataPatch = {
-  name: "Patch!!!!!",
-};
-
-const recordId = "recoRdIDHerEPeOpLe";
-
-const updateAsset = async () => {
+const updateAsset = async (recordId, data) => {
   try {
-    const response = await updateRecord("assets", recordId, dataPatch);
+    const response = await updateRecord("assets", recordId, data);
 
     console.log(response.data);
   } catch (err) {
     console.error(err);
   }
 };
+
+const data = {
+  name: "Patch!!!!!",
+};
+
+const recordId = "recoRdIDHerEPeOpLe";
+
+updateAsset(recordId, data);
 ```
 
 - Delete item:
@@ -98,9 +108,7 @@ const updateAsset = async () => {
 ```javascript
 const deleteRecord = require("./apiClient/delete");
 
-const recordId = "recoRdIDHerEPeOpLe";
-
-const deletarItem = async () => {
+const deleteAsset = async (recordId) => {
   try {
     const response = await deleteRecord("assets", recordId);
 
@@ -109,4 +117,8 @@ const deletarItem = async () => {
     console.error(err);
   }
 };
+
+const recordId = "recoRdIDHerEPeOpLe";
+
+deleteAsset(recordId);
 ```

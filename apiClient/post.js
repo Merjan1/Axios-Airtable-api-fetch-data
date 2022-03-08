@@ -1,12 +1,14 @@
 const apiBaseClient = require("./base");
 
-const createRecord = async (tableName, data) => {
+const createRecord = async (tableName, records) => {
+  const buffer = records.map((record) => {
+    return {
+      fields: record,
+    };
+  });
+
   const payload = {
-    records: [
-      {
-        fields: data,
-      },
-    ],
+    records: buffer,
   };
 
   try {

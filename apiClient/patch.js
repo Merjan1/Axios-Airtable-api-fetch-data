@@ -1,13 +1,15 @@
 const apiBaseClient = require("./base");
 
-const updateRecord = async (tableName, recordId, data) => {
+const updateRecord = async (tableName, records) => {
+  const buffer = records.map((record) => {
+    return {
+      id: record[0],
+      fields: record[1],
+    };
+  });
+
   const payload = {
-    records: [
-      {
-        id: recordId,
-        fields: data,
-      },
-    ],
+    records: buffer,
   };
 
   try {
