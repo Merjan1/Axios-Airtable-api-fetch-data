@@ -4,8 +4,9 @@
 
 **Example code below:**
 
-My story on doing this is that I was practicing data fetching using axios. I'm a front-end dev and didn't wanted to go through the process of creating a backend just to practice and didn't wanted to use random apis for that, so I decided to use Airtable, which is a great tool for helping you to get some things done nicely, since it's a cloud collaboration service oftenly used to create relational databases (no, this is not a paid advertisement).
-The thing is that airtable documentation focus mainly on fetching data using their js api, which in my case wasn't what I wanted and it was so hard to find online how to fetch data using axios and airtable, because the documentation gets a bit confusing about fetching data outside the use of the api, so I decided to make this visible to anyone that's going through the same struggles as I was.
+Is well known that Airtable is a great platform for MVP, software prototyping and a collaborational service often used to create relational databases.
+
+But Airtable API has one problem, since it focuses mainly on fetching data using their JS API and is not very clear when you’re using, for example, Axios. That’s precisely why this “DOC” is here for, to help you fetch data from Airtable using Axios.
 
 _In these example I'm fetching from an Asset table._
 
@@ -54,17 +55,28 @@ getSingleAsset(recordId);
 ```javascript
 const createRecord = require("./apiClient/post");
 
-const createAsset = async (data) => {
-  try {
-    const response = await createRecord("assets", data);
+const createAsset = async (tableName, records) => {
+  const buffer = records.map((record) => {
+    return {
+      fields: record,
+    };
+  });
 
-    console.log(response.data);
+  const payload = {
+    records: buffer,
+  };
+
+  try {
+    const response = await apiBaseClient.post(`/${tableName}`, payload);
+
+    return response;
   } catch (err) {
-    console.error(err);
+    throw err;
   }
 };
 
-const data = {
+//Creating one record:
+const records = {
   //Here you can put all the itens from field object if you want.
   name: "New asset",
   image: [
@@ -76,7 +88,33 @@ const data = {
   link: "https://mobile.twitter.com/123testandobr",
 };
 
-createAsset(data);
+createAsset(records);
+
+//Creating more than one record:
+const records = [
+  {
+    name: "New Asset 2",
+    image: [
+      {
+        url: "https://pbs.twimg.com/profile_images/1346461140/logo_twitter_400x400.jpg",
+      },
+    ],
+    price: 123,
+    link: "https://mobile.twitter.com/123testandobr",
+  },
+  {
+    name: "New Asset 3",
+    image: [
+      {
+        url: "https://pbs.twimg.com/profile_images/1346461140/logo_twitter_400x400.jpg",
+      },
+    ],
+    price: 123,
+    link: "https://mobile.twitter.com/123testandobr",
+  },
+];
+
+createAsset(records);
 ```
 
 - Update item:
@@ -84,23 +122,55 @@ createAsset(data);
 ```javascript
 const updateRecord = require("./apiClient/patch");
 
-const updateAsset = async (recordId, data) => {
-  try {
-    const response = await updateRecord("assets", recordId, data);
+const updateAsset = async (tableName, records) => {
+  const buffer = records.map((record) => {
+    return {
+      id: record[0],
+      fields: record[1],
+    };
+  });
 
-    console.log(response.data);
+  const payload = {
+    records: buffer,
+  };
+
+  try {
+    const response = await apiBaseClient.patch(`/${tableName}`, payload);
+
+    return response;
   } catch (err) {
-    console.error(err);
+    throw err;
   }
 };
 
-const data = {
-  name: "Patch!!!!!",
-};
+//Updating one record:
+const records = [
+  [
+    "recoRdIDHerEPeOpLe",
+    {
+      name: "Update Asset",
+    },
+  ],
+];
 
-const recordId = "recoRdIDHerEPeOpLe";
+updateAsset(recordId, records);
 
-updateAsset(recordId, data);
+//Updating more than one record:
+const records = [
+  [
+    "recoRdIDHerEPeOpLe",
+    {
+      name: "Update Asset 2",
+    },
+  ],
+  [
+    "recoRdIDHerEPeOpLe",
+    {
+      name: "Update Asset 3",
+    },
+  ],
+];
+updateAsset(recordId, records);
 ```
 
 - Delete item:
@@ -108,17 +178,31 @@ updateAsset(recordId, data);
 ```javascript
 const deleteRecord = require("./apiClient/delete");
 
-const deleteAsset = async (recordId) => {
-  try {
-    const response = await deleteRecord("assets", recordId);
+const deleteAsset = async (tableName, recordsId) => {
+  const buffer = recordsId.map((recordId, index) => {
+    return {
+      [`records[${index}]`]: recordId,
+    };
+  });
 
-    console.log(response.data);
+  const options = {
+    params: Object.assign({}, ...buffer),
+  };
+
+  try {
+    const response = await apiBaseClient.delete(`/${tableName}`, options);
+
+    return response;
   } catch (err) {
-    console.error(err);
+    throw err;
   }
 };
 
-const recordId = "recoRdIDHerEPeOpLe";
+//Delete one record:
+const recordsId = ["recoRdIDHerEPeOpLe"];
 
-deleteAsset(recordId);
+//Delete more than one record:
+const recordsId = ["recoRdIDHerEPeOpLe", "recoRdIDHerEPeOpLe2"];
+
+deleteAsset(recordsId);
 ```
