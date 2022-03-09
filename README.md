@@ -76,7 +76,7 @@ const createAsset = async (tableName, records) => {
 };
 
 //Creating one record:
-const records = [
+const record = [
   {
     //Here you can put all the itens from field object if you want.
     name: "New asset",
@@ -90,7 +90,7 @@ const records = [
   },
 ];
 
-createAsset(records);
+createAsset(record);
 
 //Creating more than one record:
 const records = [
@@ -146,7 +146,7 @@ const updateAsset = async (tableName, records) => {
 };
 
 //Updating one record:
-const records = [
+const record = [
   [
     "recoRdIDHerEPeOpLe",
     {
@@ -155,7 +155,7 @@ const records = [
   ],
 ];
 
-updateAsset(recordId, records);
+updateAsset(recordId, record);
 
 //Updating more than one record:
 const records = [
@@ -201,7 +201,9 @@ const deleteAsset = async (tableName, recordsId) => {
 };
 
 //Delete one record:
-const recordsId = ["recoRdIDHerEPeOpLe"];
+const recordId = ["recoRdIDHerEPeOpLe"];
+
+deleteAsset(recordId);
 
 //Delete more than one record:
 const recordsId = ["recoRdIDHerEPeOpLe", "recoRdIDHerEPeOpLe2"];
