@@ -6,9 +6,9 @@
 
 Is well known that Airtable is a great platform for MVP, software prototyping and a collaborational service often used to create relational databases.
 
-But Airtable API has one problem, since it focuses mainly on fetching data using their JS API and is not very clear when you’re using, for example, Axios. That’s precisely why this “DOC” is here for, to help you fetch data from Airtable using Axios.
+But Airtable API Documentation focuses mainly on the usage on their own JS API Library and CURL. This is a solution for thoso who want to use Axios API instead of using Airtable's JS API Library on web applications.
 
-_In these example I'm fetching from an Asset table._
+_These example is fetching from an Asset table._
 
 to see the methods required above, just check the code :)
 
