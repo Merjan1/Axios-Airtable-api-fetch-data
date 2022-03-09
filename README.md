@@ -76,17 +76,19 @@ const createAsset = async (tableName, records) => {
 };
 
 //Creating one record:
-const records = {
-  //Here you can put all the itens from field object if you want.
-  name: "New asset",
-  image: [
-    {
-      url: "https://pbs.twimg.com/profile_images/1346461140/logo_twitter_400x400.jpg",
-    },
-  ],
-  price: 123,
-  link: "https://mobile.twitter.com/123testandobr",
-};
+const records = [
+  {
+    //Here you can put all the itens from field object if you want.
+    name: "New asset",
+    image: [
+      {
+        url: "https://pbs.twimg.com/profile_images/1346461140/logo_twitter_400x400.jpg",
+      },
+    ],
+    price: 123,
+    link: "https://mobile.twitter.com/123testandobr",
+  },
+];
 
 createAsset(records);
 
