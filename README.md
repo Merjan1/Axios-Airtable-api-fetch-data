@@ -8,7 +8,7 @@ Is well known that Airtable is a great platform for MVP, software prototyping an
 
 But Airtable API Documentation focuses mainly on the usage on their own JS API Library and CURL. This is a solution for thoso who want to use Axios API instead of using Airtable's JS API Library on web applications.
 
-Limitations: Is not possible to send images to Airtable using Axios only.
+Limitations: Is not possible to send local images to Airtable using Axios only.
 
 _These example is fetching from an Asset table._
 
